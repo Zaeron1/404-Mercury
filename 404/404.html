@@ -1,63 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Mercury TFB</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ERROR 404 – Scripts TFB en cours de finalisation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    body {
-      background-color: #0b0c10;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 20px;
+    :root {
+      --bg-primary: #05060a;
+      --accent: #ffffff;          /* blanc */
+      --accent-glitch: #ffffff;   /* blanc pour glitch offset */
+      --orbit-color: #7c8794;     /* gris trajectoire */
+      --text-primary: #ffffff;
+      --text-secondary: #ffffff;
+      --border-color: #ffffff;
+      --planet-shadow: rgba(255, 255, 255, 0.2);
     }
-    .mercury-container {
-      position: relative;
-      width: 600px;
-      height: 600px;
-      margin: 30px auto;
-    }
-    .mercury {
-      width: 250px;
-      height: 250px;
-      position: absolute;
-      top: 200px; /* descend un peu */
-      left: 175px;
-      background: url('mercury.png') no-repeat center center;
-      background-size: contain;
-    }
-    .messenger {
-      width: 40px;
-      height: 40px;
-      position: absolute;
-      top: 100px; /* Départ au nord */
-      left: 280px;
-      background: url('messenger.png') no-repeat center center;
-      background-size: contain;
-      animation: orbit 12s linear infinite;
-      transform-origin: 20px 200px; /* Centre de rotation déplacé sous la sonde */
-    }
-    @keyframes orbit {
-      from {
-        transform: rotate(0deg) translateX(200px) rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg) translateX(200px) rotate(-360deg);
-      }
-    }
-    h1 {
-      font-size: 24px;
-    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Roboto Mono',monospace;color:var(--text-primary);background:var(--bg-primary);overflow-x:hidden}
+    /* Glitch title */
+    h1{font-family:'Orbitron',sans-serif;position:relative;text-align:center;text-transform:uppercase;font-weight:700;font-size:clamp(2rem,4vw+1rem,3rem);letter-spacing:.075em;color:var(--accent);margin:2.5rem 0;line-height:1.2}
+    .glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%}
+    .glitch::before{left:2px;text-shadow:-2px 0 rgba(255,255,255,0.35);clip-path:inset(0 0 45% 0);animation:gl1 2.5s infinite alternate-reverse linear}
+    .glitch::after{left:-2px;text-shadow:2px 0 rgba(255,255,255,0.35);clip-path:inset(55% 0 0 0);animation:gl2 3s infinite alternate-reverse linear}
+    @keyframes gl1{0%{transform:translateY(0)}20%{transform:translateY(-2px)}40%{transform:translateY(2px)}60%{transform:translateY(-1px)}80%{transform:translateY(1px)}100%{transform:translateY(0)}}
+    @keyframes gl2{0%{transform:translateY(0)}15%{transform:translateY(1px)}30%{transform:translateY(-1px)}45%{transform:translateY(2px)}60%{transform:translateY(-2px)}100%{transform:translateY(0)}}
+    /* starfield */
+    .starfield{position:fixed;inset:0;background-image:radial-gradient(1px 1px at 25% 40%,#8ab4f8 100%,transparent 0),radial-gradient(1px 1px at 60% 70%,#e8eaed 100%,transparent 0),radial-gradient(1.5px 1.5px at 80% 20%,#ffffff 100%,transparent 0),radial-gradient(1px 1px at 10% 90%,#9be5ff 100%,transparent 0);background-size:300px 300px;animation:drift 200s linear infinite;pointer-events:none;z-index:-2}
+    @keyframes drift{from{transform:translateY(0)}to{transform:translateY(100%)}}
+
+    .scene{position:relative;width:min(90vw,600px);aspect-ratio:1/1;margin:2rem auto 1.5rem}
+    .orbit-svg{position:absolute;inset:0;overflow:visible;z-index:0}
+    .orbit-svg path{fill:none;stroke:var(--orbit-color);stroke-width:2;stroke-dasharray:6 8;stroke-linecap:round}
+
+    .mercury{position:absolute;width:35%;height:35%;background:url('mercury.png') center/contain no-repeat;filter:drop-shadow(0 0 20px var(--planet-shadow));z-index:1}
+    .messenger{position:absolute;width:8%;height:8%;background:url('messenger.png') center/contain no-repeat;z-index:2}
+
+    .info-panels{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-bottom:3rem}
+    .info-panel{width:clamp(260px,42vw,400px);background:rgba(11,12,16,.8);backdrop-filter:blur(6px);border:1px solid var(--border-color);border-radius:1rem;padding:1.25rem 1.5rem;box-shadow:0 0 20px rgba(255,255,255,.15)}
+    .info-panel h2{font-family:'Orbitron',sans-serif;font-size:1.25rem;color:var(--text-primary);text-align:center;margin-bottom:.75rem}
+    .info-panel ul{list-style:none;font-size:.95rem;line-height:1.6}
+    .info-panel li{display:flex;justify-content:space-between;border-bottom:1px dotted rgba(255,255,255,.2);padding:.25rem 0}
+    .info-panel li:last-child{border-bottom:none}
+    .label,.value{color:var(--text-primary)}
   </style>
 </head>
 <body>
+  <div class="starfield" aria-hidden="true"></div>
+  <h1 class="glitch" data-text="ERROR 404 – TFB en phase de finalisation">
+    ERROR 404 – TFB en phase de finalisation<br><span style="font-size:.65em;font-weight:400">Disponible très prochainement…</span>
+  </h1>
 
-<h1>Le code pour mon TFB est encore en cours de finalisation :/ </h1>
+  <div class="scene" aria-label="Visualisation de l'orbite elliptique de la sonde autour de Mercure">
+    <svg class="orbit-svg" xmlns="http://www.w3.org/2000/svg"><path id="orbit-path" d=""/></svg>
+    <div class="mercury" id="planet"></div>
+    <div class="messenger" id="probe"></div>
+  </div>
 
-<div class="mercury-container">
-  <div class="mercury"></div>
-  <div class="messenger"></div>
-</div>
+  <section class="info-panels">
+    <div class="info-panel" aria-labelledby="m1"><h2 id="m1">Mercure – Données clés</h2><ul id="list-mercury"></ul></div>
+    <div class="info-panel" aria-labelledby="m2"><h2 id="m2">MESSENGER – Paramètres mission</h2><ul id="list-messenger"></ul></div>
+  </section>
 
+  <script>
+    const mercuryData=[{label:'Rayon équatorial',value:'2 439.7 km'},{label:'Masse',value:'3.3011 × 10^23 kg'},{label:'Période sidérale',value:'87.969 jours'},{label:'Gravité',value:'3.7 m·s⁻²'},{label:'T° jour',value:'703 K (430 °C)'},{label:'T° nuit',value:'93 K (−180 °C)'}];
+    const messengerData=[{label:'Lancement',value:'03/08/2004'},{label:'Insertion',value:'18/03/2011'},{label:'Fin',value:'30/04/2015'},{label:'Périapside',value:'200 km'},{label:'Apoapside',value:'15 200 km'},{label:'Période',value:'12 h'},{label:'Inclinaison',value:'82.5°'},{label:'Masse',value:'1 107 kg'}];
+    const fill=(id,d)=>{const ul=document.getElementById(id);d.forEach(o=>{const li=document.createElement('li');li.innerHTML=`<span class='label'>${o.label}</span><span class='value'>${o.value}</span>`;ul.appendChild(li)});};
+    fill('list-mercury',mercuryData);fill('list-messenger',messengerData);
+
+    const scene=document.querySelector('.scene');
+    const probe=document.getElementById('probe');
+    const planet=document.getElementById('planet');
+    const pathEl=document.getElementById('orbit-path');
+    function init(){const r=scene.getBoundingClientRect();const cx=r.width/2,cy=r.height/2+r.height*0.05;const a=r.width*0.50,b=r.width*0.35;const angle=22*Math.PI/180;const Rplanet=r.width*0.175,Rprobe=r.width*0.04;const peri=Rplanet+Rprobe+4,c=a-peri;const fx=cx-c*Math.cos(angle),fy=cy-c*Math.sin(angle);planet.style.left=fx-Rplanet+'px';planet.style.top=fy-Rplanet+'px';planet.style.width=planet.style.height=Rplanet*2+'px';let d=`M ${cx+a*Math.cos(angle)} ${cy+a*Math.sin(angle)}`;for(let i=1;i<=360;i++){const t=i*Math.PI/180;const xe=a*Math.cos(t),ye=b*Math.sin(t);const xr=xe*Math.cos(angle)-ye*Math.sin(angle);const yr=xe*Math.sin(angle)+ye*Math.cos(angle);d+=` L ${cx+xr} ${cy+yr}`;}pathEl.setAttribute('d',d);function anim(t){const th=t%12000/12000*2*Math.PI;const xe=a*Math.cos(th),ye=b*Math.sin(th);const xr=xe*Math.cos(angle)-ye*Math.sin(angle);const yr=xe*Math.sin(angle)+ye*Math.cos(angle);probe.style.left=cx+xr-Rprobe+'px';probe.style.top=cy+yr-Rprobe+'px';requestAnimationFrame(anim);}requestAnimationFrame(anim);}window.addEventListener('load',init);window.addEventListener('resize',init);
+  </script>
 </body>
 </html>
