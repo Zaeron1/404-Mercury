@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ERROR 404 – Scripts TFB en cours de finalisation</title>
+  <title> ERROR 404 – Scripts les scripts du TFB on été publiés</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -47,9 +47,16 @@
 </head>
 <body>
   <div class="starfield" aria-hidden="true"></div>
-  <h1 class="glitch" data-text="ERROR 404 – Scripts TFB en phase de finalisation">
-    ERROR 404 – Scripts TFB en phase de finalisation<br><span style="font-size:.65em;font-weight:400">Disponible très prochainement…</span>
+  <h1 class="glitch" data-text="ERROR 404 – Scripts les scripts du TFB on été publiés">
+    ERROR 404 – Scripts les scripts du TFB on été publiés<br><span style="font-size:.45em;font-weight:400">Disponible sur le GitHub suivant</span>
   </h1>
+
+  <!-- 🔗 Lien GitHub -->
+<div style="text-align: center; margin-top: 1rem;">
+  <a href="https://github.com/Zaeron1/Mercury-TFB-" target="_blank" style="color: white; text-decoration: underline; font-family: 'Roboto Mono', monospace; font-size: 1rem;">
+    📂 Accéder aux scripts sur GitHub
+  </a>
+</div>
 
   <div class="scene" aria-label="Visualisation de l'orbite elliptique de la sonde autour de Mercure">
     <svg class="orbit-svg" xmlns="http://www.w3.org/2000/svg"><path id="orbit-path" d=""/></svg>
@@ -63,7 +70,7 @@
   </section>
 
   <script>
-    const mercuryData=[{label:'Rayon équatorial',value:'2 439.7 km'},{label:'Masse',value:'3.3011 × 10^23 kg'},{label:'Période sidérale',value:'87.969 jours'},{label:'Gravité',value:'3.7 m·s⁻²'},{label:'T° jour',value:'703 K (430 °C)'},{label:'T° nuit',value:'93 K (−180 °C)'}];
+    const mercuryData=[{label:'Rayon équatorial',value:'2 439.7 km'},{label:'Masse départ',value:'3.3011 × 10^23 kg'},{label:'Période sidérale',value:'87.969 jours'},{label:'Gravité',value:'3.7 m·s⁻²'},{label:'T° jour',value:'703 K (430 °C)'},{label:'T° nuit',value:'93 K (−180 °C)'}];
     const messengerData=[{label:'Lancement',value:'03/08/2004'},{label:'Insertion',value:'18/03/2011'},{label:'Fin',value:'30/04/2015'},{label:'Périapside',value:'200 km'},{label:'Apoapside',value:'15 200 km'},{label:'Période',value:'12 h'},{label:'Inclinaison',value:'82.5°'},{label:'Masse',value:'1 107 kg'}];
     const fill=(id,d)=>{const ul=document.getElementById(id);d.forEach(o=>{const li=document.createElement('li');li.innerHTML=`<span class='label'>${o.label}</span><span class='value'>${o.value}</span>`;ul.appendChild(li)});};
     fill('list-mercury',mercuryData);fill('list-messenger',messengerData);
