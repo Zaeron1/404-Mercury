@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>UNE FUSION TRÈS PARTIELLE</title>
+  <style>
+    /* Tout utilise box-sizing border-box pour que padding n’agrandisse pas la largeur */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --duration: 120s;
+      /* Police responsive : min 40px, idéal 6vw, max 72px */
+      --font-size: clamp(40px, 6vw, 72px);
+      --h1-font-size: clamp(64px, 8vw, 96px);
+      --logo-font-size: clamp(56px, 7vw, 84px);
+    }
+
+    body {
+      background: black;
+      color: #ffe81f;
+      font-family: 'Georgia', serif;
+      overflow: hidden;
+      height: 100vh;
+      perspective: 700px;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Starfield.png') repeat;
+      opacity: 0.15;
+      animation: starScroll 200s linear infinite;
+      z-index: 0;
+    }
+    @keyframes starScroll {
+      from { background-position: 0 0; }
+      to   { background-position: 0 -1000px; }
+    }
+
+    .crawl {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100vw;           /* Pleine largeur */
+      /* plus de padding pour maximiser la place */
+      font-size: var(--font-size);
+      line-height: 1.2;       /* interlignage serré */
+      text-align: justify;
+      transform-origin: 50% 100%;
+      white-space: normal;
+      animation: scroll var(--duration) linear forwards;
+      z-index: 1;
+    }
+
+    .crawl h1 {
+      text-align: center;
+      font-size: var(--h1-font-size);
+      margin-bottom: 1em;
+    }
+
+    .logo {
+      text-align: center;
+      font-weight: bold;
+      font-size: var(--logo-font-size);
+      margin: 1.5em 0;
+    }
+
+    @keyframes scroll {
+      0% {
+        top: 100%;
+        transform: rotateX(25deg) translateZ(0);
+      }
+      100% {
+        top: -1500%;
+        transform: rotateX(25deg) translateZ(-4000px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="crawl">
+    <h1>Épisode TFB<br>UNE FUSION TRÈS PARTIELLE</h1>
+
+    <p class="logo">Sur une planète pas si éloignée… MERCURE</p>
+
+    <p>Alors que le spectre d’un mémoire en retard plane au-dessus de l’Université de Liège, un jeune padawan de la géologie se lance dans une quête insensée : comparer des données expérimentales terrestres à une planète qui, rappelons-le, n’a même pas d’atmosphère digne de ce nom.</p>
+
+    <p>Son arme ? Des rapports Mg/Si, Al/Si et Ca/Si obtenus à partir de pixels d’une carte de 1440 × 720, avec une résolution si fine qu’il pourrait presque y voir passer des marées… s’il y en avait.</p>
+
+    <p>Mais pour affronter les sombres profondeurs de l’origine des laves mercuriennes, il lui faudra braver bien plus que des cartes BMP et des colonnes CSV. Il devra interpoler, normaliser, corriger, et surtout… rester réveillé après le quatrième diagramme ternaire d’affilée.</p>
+
+    <p>Guidé par des pressions de 1,5 à 5 GPa et des fusions plus ou moins partielles (plutôt moins), il apprend que la vraie difficulté n’est pas de faire parler les roches, mais d’expliquer leur silence dans un chapitre Discussion.</p>
+
+    <p>Dans les ténèbres du traitement de données, une lumière persiste : un fichier Python nommé « version_finale_corrigée_bis4.py » qui, miracle, ne plante plus. Le chemin vers la validation est long, mais l’Espoir géochimique est toujours vivant.</p>
+
+    <p>La légende raconte qu’un jour, un reviewer anonyme trouvera ce travail « intéressant ». Mais pour l’instant, la seule chose qui fond, ce n’est pas le manteau de Mercure… c’est l’étudiant.</p>
+
+    <p class="logo">Que la fusion soit partielle, mais la note totale.</p>
+  </div>
+</body>
+</html>
